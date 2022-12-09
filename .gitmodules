@@ -1,0 +1,3 @@
+[submodule "cgp"]
+	path = cgp
+	url = git@github.com:drohmer/cgp.git
