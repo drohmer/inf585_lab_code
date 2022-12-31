@@ -11,6 +11,7 @@ or
 
 ```
 git clone https://github.com/drohmer/inf585_code.git
+cd inf585_code
 git submodule init
 git submodule update
 ```
