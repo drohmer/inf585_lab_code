@@ -38,7 +38,7 @@ make -j$(nproc)
 ./00_introduction
 ```
 
-More details are provided in the dedicated [Installation setup and Compilation page](https://imagecomputing.net/cgp/compilation) if needed.
+More details are provided in the dedicated [Installation setup and Compilation page](https://imagecomputing.net/cgp/compilation) if needed (Windows, Linux, Mac).
 
 ## Requirement
 
