@@ -40,6 +40,18 @@ make -j$(nproc)
 
 More details are provided in the dedicated [Installation setup and Compilation page](https://imagecomputing.net/cgp/compilation) if needed.
 
+## Requirement
+
+The code requires the GLFW library in Linux and Mac.
+
+ex. on Ubuntu
+
+```
+sudo apt-get install libglfw3-dev
+```
+
+
+
 ## Links
 
 * [Lab class exercices](https://imagecomputing.net/damien.rohmer/teaching/inf585/practice/index.html)
