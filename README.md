@@ -21,8 +21,8 @@ git submodule update
 
 ### Download archive
 
-* - [inf585_code.zip](https://imagecomputing.net/damien.rohmer/teaching/inf585/code/inf585_code.zip)
-* - [inf585_code.tar.gz](https://imagecomputing.net/damien.rohmer/teaching/inf585/code/inf585_code.tar.gz)
+* [inf585_code.zip](https://imagecomputing.net/damien.rohmer/teaching/inf585/code/inf585_code.zip)
+* [inf585_code.tar.gz](https://imagecomputing.net/damien.rohmer/teaching/inf585/code/inf585_code.tar.gz)
 
 
 _Note: Do not use the "Code -> Download ZIP" option from the GitHub GUI as you won't get the CGP library as submodule with the code._
