@@ -3,6 +3,9 @@
 ## Download
 
 
+
+### Clone
+
 ```
 git clone --recurse-submodules https://github.com/drohmer/inf585_code.git
 ```
@@ -15,6 +18,15 @@ cd inf585_code/
 git submodule init
 git submodule update
 ```
+
+### Download archive
+
+* - inf585_code.zip[https://imagecomputing.net/damien.rohmer/teaching/inf585/code/inf585_code.zip]
+* - inf585_code.tar.gz[https://imagecomputing.net/damien.rohmer/teaching/inf585/code/inf585_code.tar.gz]
+
+
+_Note: Do not use the "Code -> Download ZIP" option from the GitHub GUI as you won't get the CGP library as submodule with the code._
+
 
 ## Compilation
 
