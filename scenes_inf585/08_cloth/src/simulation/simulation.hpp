@@ -7,10 +7,10 @@
 
 struct simulation_parameters
 {
-    float dt = 0.08f;        // time step for the numerical integration
-    float mass_total = 1.0f; // total mass of the cloth
-    float K = 10.0f;         // stiffness parameter
-    float mu = 40.0f;        // damping parameter
+    float dt = 0.005f;        // time step for the numerical integration
+    float mass_total = 0.5f; // total mass of the cloth
+    float K = 5.0f;         // stiffness parameter
+    float mu = 15.0f;        // damping parameter
 
     //  Wind magnitude and direction
     struct {

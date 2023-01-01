@@ -12,48 +12,65 @@ using namespace cgp;
 // - Wind force
 void simulation_compute_force(cloth_structure& cloth, simulation_parameters const& parameters)
 {
-    // direct access to the variables
-    grid_2D<vec3>& force = cloth.force;
-    grid_2D<vec3> const& position = cloth.position;
-    grid_2D<vec3> const& velocity = cloth.velocity;
+    // Direct access to the variables
+    //  Note: A grid_2D is a structure you can access using its 2d-local index coordinates as grid_2d(k1,k2)
+    //   The index corresponding to grid_2d(k1,k2) is k1 + N1*k2, with N1 the first dimension of the grid.
+    //   
+    grid_2D<vec3>& force = cloth.force;  // Storage for the forces exerted on each vertex
 
-    size_t const N = cloth.position.size();       // total number of vertices
-    size_t const N_edge = cloth.N_samples_edge(); // number of vertices in one dimension of the grid
+    grid_2D<vec3> const& position = cloth.position;  // Storage for the positions of the vertices
+    grid_2D<vec3> const& velocity = cloth.velocity;  // Storage for the normals of the vertices
+    grid_2D<vec3> const& normal = cloth.normal;      // Storage for the velocity of the vertices
+    
 
-    // Retrive simulation parameter
+    size_t const N_total = cloth.position.size();       // total number of vertices
+    size_t const N = cloth.N_samples();                 // number of vertices in one dimension of the grid
+
+    // Retrieve simulation parameter
+    //  The default value of the simulation parameters are defined in simulation.hpp
     float const K = parameters.K;              // spring stifness
-    float const m = parameters.mass_total / N; // mass of a particle
-    float const mu = parameters.mu;            // damping coefficient
-    float const	L0 = 1.0f / (N_edge - 1.0f);   // rest length between two direct neighboring particle
+    float const m = parameters.mass_total / N_total; // mass of a particle
+    float const mu = parameters.mu;            // damping/friction coefficient
+    float const	L0 = 1.0f / (N - 1.0f);        // rest length between two direct neighboring particle
 
 
     // Gravity
     const vec3 g = { 0,0,-9.81f };
-    for (int ku = 0; ku < N_edge; ++ku)
-        for (int kv = 0; kv < N_edge; ++kv)
+    for (int ku = 0; ku < N; ++ku)
+        for (int kv = 0; kv < N; ++kv)
             force(ku, kv) = m * g;
 
-    // Drag
-    for (int ku = 0; ku < N_edge; ++ku)
-        for (int kv = 0; kv < N_edge; ++kv)
+    // Drag (= friction)
+    for (int ku = 0; ku < N; ++ku)
+        for (int kv = 0; kv < N; ++kv)
             force(ku, kv) += -mu * m * velocity(ku, kv);
 
 
     // TO DO: Add spring forces ...
-    for (int ku = 0; ku < N_edge; ++ku) {
-        for (int kv = 0; kv < N_edge; ++kv) {
+    for (int ku = 0; ku < N; ++ku) {
+        for (int kv = 0; kv < N; ++kv) {
             // ...
+            // force(ku,kv) = ... fill here the force exerted by all the springs attached to the vertex at coordinates (ku,kv).
+            // 
+            // Notes:
+            //   - The vertex positions can be accessed as position(ku,kv)
+            //   - The neighbors are at position(ku+1,kv), position(ku-1,kv), position(ku,kv+1), etc. when ku+offset is still in the grid dimension.
+            //   - You may want to loop over all the neighbors of a vertex to add each contributing force to this vertex
+            //   - To void repetitions and limit the need of debuging, it may be a good idea to define a generic function that computes the spring force between two positions given the parameters K and L0
+            //   - If the simulation is a bit too slow, you can speed it up in adapting the parameter N_step in scene.cpp that loops over several simulation step between two displays.
         }
     }
+
 }
 
 void simulation_numerical_integration(cloth_structure& cloth, simulation_parameters const& parameters, float dt)
 {
-    int const N_edge = cloth.N_samples_edge();
-    float const m = parameters.mass_total/ static_cast<float>(N_edge);
+    int const N = cloth.N_samples();
+    int const N_total = cloth.position.size();
+    float const m = parameters.mass_total/ static_cast<float>(N_total);
 
-    for (int ku = 0; ku < N_edge; ++ku) {
-        for (int kv = 0; kv < N_edge; ++kv) {
+    for (int ku = 0; ku < N; ++ku) {
+        for (int kv = 0; kv < N; ++kv) {
             vec3& v = cloth.velocity(ku, kv);
             vec3& p = cloth.position(ku, kv);
             vec3 const& f = cloth.force(ku, kv);

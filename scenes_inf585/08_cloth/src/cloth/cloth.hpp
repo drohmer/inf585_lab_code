@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include "cgp/cgp.hpp"
 #include "../environment.hpp"
 
@@ -18,7 +19,7 @@ struct cloth_structure
     
     void initialize(int N_samples_edge);  // Initialize a square flat cloth
     void update_normal();       // Call this function every time the cloth is updated before its draw
-    int N_samples_edge() const; // Number of vertex along one dimension of the grid
+    int N_samples() const;      // Number of vertex along one dimension of the grid
 };
 
 

@@ -75,7 +75,7 @@ void scene_structure::display_frame()
 		simulation_compute_force(cloth, parameters);
 
 		// One step of numerical integration
-		simulation_numerical_integration(cloth, parameters, parameters.dt / N_step);
+		simulation_numerical_integration(cloth, parameters, parameters.dt);
 
 		// Apply the positional (and velocity) constraints
 		simulation_apply_constraints(cloth, constraint);
@@ -117,10 +117,10 @@ void scene_structure::display_gui()
 	ImGui::Spacing(); ImGui::Spacing();
 
 	ImGui::Text("Simulation parameters");
-	ImGui::SliderFloat("Time step", &parameters.dt, 0.01f, 0.2f);
-	ImGui::SliderFloat("Stiffness", &parameters.K, 1.0f, 80.0f, "%.3f", 2.0f);
+	ImGui::SliderFloat("Time step", &parameters.dt, 0.0001f, 0.02f, "%.4f", 2.0f);
+	ImGui::SliderFloat("Stiffness", &parameters.K, 0.2f, 50.0f, "%.3f", 2.0f);
 	ImGui::SliderFloat("Wind magnitude", &parameters.wind.magnitude, 0, 60, "%.3f", 2.0f);
-	ImGui::SliderFloat("Damping", &parameters.mu, 1.0f, 100.0f);
+	ImGui::SliderFloat("Damping", &parameters.mu, 1.0f, 30.0f);
 	ImGui::SliderFloat("Mass", &parameters.mass_total, 0.2f, 5.0f, "%.3f", 2.0f);
 
 	ImGui::Spacing(); ImGui::Spacing();

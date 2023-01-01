@@ -30,7 +30,7 @@ void cloth_structure::update_normal()
     normal_per_vertex(position.data, triangle_connectivity, normal.data);
 }
 
-int cloth_structure::N_samples_edge() const
+int cloth_structure::N_samples() const
 {
     return position.dimension.x;
 }
