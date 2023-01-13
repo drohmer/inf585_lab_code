@@ -70,4 +70,10 @@ sudo apt-get install libglfw3-dev
 * [Documentation on CGP library](https://imagecomputing.net/cgp/index.html)
 
 
+* [INF585 Course Website](https://damienrohmer.com/data/teaching/2022_2023/x-inf585)
 
+### Open source content
+
+* [Source lab class content](https://github.com/drohmer/inf585_lab_class)
+* [Source slides content](https://github.com/drohmer/inf585_course_slides)
+* [Source CGP library](https://github.com/drohmer/cgp)
