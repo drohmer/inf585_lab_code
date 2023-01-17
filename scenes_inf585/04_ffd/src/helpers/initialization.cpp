@@ -1,6 +1,6 @@
 
 #include "initialization.hpp"
-#include "environment.hpp"
+#include "../environment.hpp"
 
 using namespace cgp;
 

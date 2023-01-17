@@ -31,7 +31,12 @@ numarray<grid_3D<float> > precompute_weights(numarray<vec3>& position, int Nx, i
 	//    with (x_k,y_k,z_k) <= position[k]
 	//         (kx,ky,kz) varying on the grid dimension
 	//         b_kx, b_ky, b_kz being the Bezier basis functions
-
+	//
+	// Note: a grid 3D is a (array-like) structure provided by the library in order to conveniently store and access elements ordered with 3 paramters:
+	// - Resizing a grid_3D:
+	//   grid_3D G; G.resize(Nx, Ny, Nz);
+	// - Accessing/Modifying an element at index (kx,ky,kz):
+	//   element=G(kx,ky,kz); or G(kx,ky,kz)=element;
 
 	return weights;
 }
