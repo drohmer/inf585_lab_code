@@ -66,7 +66,7 @@ sudo apt-get install libglfw3-dev
 
 ## Links
 
-* [Lab class exercices](https://imagecomputing.net/damien.rohmer/teaching/inf585/practice/index.html)
+* [Lab class exercises](https://damienrohmer.com/data/teaching/2022_2023/x-inf585/practice/index.html)
 * [Documentation on CGP library](https://imagecomputing.net/cgp/index.html)
 
 
