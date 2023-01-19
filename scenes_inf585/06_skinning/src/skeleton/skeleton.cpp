@@ -37,11 +37,11 @@ namespace cgp
 		bool const find_time = find_interval(kt, alpha, animation_time, t);
 		assert_cgp(find_time, "Could not find correct time interval for time t="+str(t)+", while allowed time interval is ["+str(animation_time[0])+","+str(animation_time[animation_time.size()-1])+"]");
 
-		size_t const N_joint = animation_geometry_local[0].size();
+		int const N_joint = animation_geometry_local[0].size();
 		numarray<affine_rt> skeleton_current;
 		skeleton_current.resize(N_joint);
 
-		for(size_t kj=0; kj<N_joint; ++kj)
+		for(int kj=0; kj<N_joint; ++kj)
 		{
 			
 			affine_rt const T0 = animation_geometry_local[kt][kj];
@@ -51,9 +51,28 @@ namespace cgp
 			//   Set a correct interpolated rigid transform T for the skeleton
 			//   T = interpolation(T0, T1, alpha)
 			//   Note: T0, T1, and alpha are provided
-			//    T0 and T1 are affine_rt type that contains a translation (vec3) and a rotation element
-			//    alpha is the interpolation value \in [0,1]
-			//    You have to find which values to set on T.translation and T.rotation
+			//     T0 and T1 are affine_rt type that contains a translation (vec3) and a rotation element
+			//     alpha is the interpolation value \in [0,1]
+			//     You have to find which values to set on T.translation and T.rotation
+			//
+			// 
+			// Additional note on affine_rt structure:
+			//   {affine_rt}.translation gives access to the translation part of the transform (vec3)
+			//   {affine_rt}.rotation gives access to the rotation part of the transform (rotation_transform type)
+			//  
+			//  A rotation_transform structure stores a unit quaternion ({rotation_transform}.data give you direct access to the quaternion structure)
+			//    rotation_transform already implements a linear interpolation: rotation_transform::lerp(rot1, rot2, alpha)
+			//    if you want to code the interpolation yourself on quaternion, you can access to the raw quaternion as follow:
+			//    quaternion q0 = T0.rotation.data // quaternion can be manipulated like a vec4
+			//    quaternion q1 = T1.rotation.data
+			//     ... Compute the interpolation on quaternion q ... 
+			//    Finally re-build an affine transform
+			//    1) Build a rotation_transform from quaternion: rotation_transform R(q); [optional]
+			//    2) Build an affine_rt from a rotation and translation:
+			//          affine_rt A({rotation}, {translation});
+			//       or 
+			//          A.rotation = {rotation}, 
+			//          A.translation = {translation}
 			
 			skeleton_current[kj] = T0; // Change this line
 		}
