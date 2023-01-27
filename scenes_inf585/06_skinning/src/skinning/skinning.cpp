@@ -37,7 +37,7 @@ namespace cgp
 
 		// To do
 		//   Compute the Linear Blend Skinning ...
-		//
+		//   ...
 		// 
 		//
 		// Additional notes on transformation and matrices:
@@ -45,21 +45,28 @@ namespace cgp
 		//  1) An affine_rt structure ensure that its content correspond to a rigid transform ({affine_rt}.rotation, {affine_rt}.translation)
 		//  - The inverse of an affine_rt structure can be efficiently computed using the inverse function
 		//      {affine_rt_inverse} = inverse({affine_rt});
+		// 
+		//  2) Affine_rt structures can be multiplied together: {affine_rt} * {affine_rt}
+		// 
+		//  3) Affine_rt can be multiplied with a scalar thus creating a affine_rts (rotation, translation, scaling) structure: {affine_rts} = scalar * {affine_rt}
 		//
-		//  2) Affine_rt structures cannot be summed-up directly with another affine_rt as the result would generally not be a rigid transform.
+		//  4) Affine_rt structures cannot be summed-up directly with another affine_rt as the result would generally not be a rigid transform.
+		// 
+		//  5) Affine_rt (and affine_rts) can be applied to 3D position p:
+		//     vec3 q = {affine_rt} * p
 		//
-		//  3) Affine_rt structures can be converted to their corresponding matrix using
+		//  6) Affine_rt structures can be converted to their corresponding matrix using
 		//       {mat4} = {affine_rt}.matrix();
-		//       mat4 matrices can be summed-up and multiplied by scalars.
+		//       mat4 matrices can be summed-up.
 		//
-		//  4) Applying a mat4 matrix to a 3/4D vector can be applied in the following ways:
+		//  7) Applying a mat4 matrix to a 3/4D vector can be applied in the following ways:
 		//       {vec4} = {mat4} * vec4{x,y,z,1} // applying the mat4 to a 3D point (result is a vec4)
 		//       {vec4} = {mat4} * vec4{x,y,z,0} // applying the mat4 to a 3D vector (result is a vec4)
 		//       A vec3 can be extracted from a vec4 using the following relation:
 		//       {vec3} = {vec4}.xyz();
 		//
-		//   5) A direct operation between mat4 and 3D point is also available:
-		//       {vec3} = {mat4} * vec3{x,y,z} 
+		//   8) A direct operation between mat4 and 3D point is also available:
+		//       {vec3} = {mat4} .apply_to_vec3_position( vec3{x,y,z} )
 		//       => Assume the vector is a point vec4{x,y,z,1.0}, and perform automatically the renormalization.
 		//       Similar to the following two lines:
 		//         vec4 temp = {mat4} * vec4{x,y,z,1};
@@ -68,8 +75,11 @@ namespace cgp
 		//    Therefore the two following lines are similar (only when the mat4 is an affine transform)
 		//         {vec3} = ({mat4} * vec4{x,y,z,1}).xyz();
 		//         {vec3} = {mat4} * vec3{x,y,z};
-		//    An applying the mat4 to a 3D vector (instead of point) can be written in one line
+		// 
+		//    And applying the mat4 to a 3D vector (instead of point) can be written in one line
 		//         {vec3} = ({mat4} * vec3{x,y,z,0}).xyz();
+		//    Or in using the direct operation
+		//         {vec3} = {mat4}.apply_to_vec3_normal({vec3});
 		
 		
 
