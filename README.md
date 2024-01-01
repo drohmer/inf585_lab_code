@@ -78,7 +78,7 @@ You may use the provided scripts (in directory scripts/) and configuration files
 * _vscode.code-workspace_: workspace configuration file for Visual Code Studio (vscode). 
 * _scripts/linux_compile_run_cmake.py_: Run CMake, compile and run the code on Linux and MacOS. linux_clean.py remove temporary files.
 * _scripts/windows_cmake_visual.bat_: On Windows, call CMake and generate a Visual Studio project. CMake must be accessible on the command line path. scripts/windows_clean.bat remove the temporary files and the visual studio project.
-* _scripts/linux_compile_emscripten.py_: Generate a webpage runing the code of the scene. The script can run on Linux and MacOS if link:https://emscripten.org/docs/getting_started/downloads.html[emscripten] is installed.
+* _scripts/linux_compile_emscripten.py_: Generate a webpage runing the code of the scene. The script can run on Linux and MacOS if [emscripten](https://emscripten.org/docs/getting_started/downloads.html) is installed.
 
 ## Links
 
