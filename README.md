@@ -7,13 +7,13 @@
 ### Clone
 
 ```
-git clone --recurse-submodules https://github.com/drohmer/inf585_code.git
+git clone --recurse-submodules https://github.com/drohmer/inf585_lab_code.git
 ```
 
 or
 
 ```
-git clone https://github.com/drohmer/inf585_code.git
+git clone https://github.com/drohmer/inf585_lab_code.git
 cd inf585_code/
 git submodule init
 git submodule update
@@ -39,14 +39,14 @@ Compilation via CMake
 cd scenes_inf585/00_introduction/
 cmake -B build/
 cd build/
-make -j$(nproc)
+make -j8 # or any -jN, with N=$(nproc)
 ./00_introduction
 ```
 
 Compilation via Makefile
 ```
 cd scenes_inf585/00_introduction/
-make -j$(nproc)
+make -j8 # or any -jN, with N=$(nproc)
 ./00_introduction
 ```
 
@@ -62,6 +62,13 @@ ex. on Ubuntu
 sudo apt-get install libglfw3-dev
 ```
 
+For Mac:
+* You may use brew to install glfw. And add the following two lines on your .zshrc to add glfw library to the path
+```
+export CPATH=/opt/homebrew/include
+export LIBRARY_PATH=/opt/homebrew/lib
+```
+* Alternatively, a pre-compiled glfw can be used without installation. To activate it, open the CMakeLists.txt file and set the option MACOS_GLFW_PRECOMPILED to ON. You may need to explicitely allow the mac to use the library if security triggers an alert.
 
 
 ## Links
