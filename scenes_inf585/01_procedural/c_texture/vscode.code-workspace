@@ -1,0 +1,40 @@
+// Configuration file for VSCode workspace to load the current path and the cgp library in the explorer
+// To use it: open your vscode workspace using this file
+{
+	"folders": [
+		{
+			"name": "Scene-c_texture",
+			"path": "."
+		},
+		{
+			"name": "cgp",
+			"path": "../../../cgp/library/",
+		}
+	],
+
+	"extensions": {
+	"recommendations": ["twxs.cmake","raczzalan.webgl-glsl-editor"]
+	},
+
+	"launch": {
+		"configurations": [{
+			"type": "cppdbg",
+			"request": "launch",
+			"name": "C++ Run",
+			"program": "${workspaceFolder:Scene-c_texture}/build/c_texture",
+			"cwd": "${workspaceFolder:Scene-c_texture}",
+			"linux": {
+				"MIMode": "gdb"
+			},
+			"osx": {
+				"MIMode": "lldb"
+			},
+			"externalConsole": false, // common output on external console (default false)
+			"logging": {
+				"moduleLoad": false, // display all library load (default false)
+				"trace": true
+			}
+		}]
+	  }
+
+}

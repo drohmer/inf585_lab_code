@@ -27,6 +27,7 @@ scene_structure scene;
 window_structure standard_window_initialization(int width = 0, int height = 0);
 void initialize_default_shaders();
 void animation_loop();
+void display_gui_default(scene_structure& scene);
 
 timer_fps fps_record;
 
@@ -108,12 +109,14 @@ void animation_loop()
 	}
 
 	imgui_create_frame();
+	ImGui::GetIO().FontGlobalScale = project::gui_scale;
 	ImGui::Begin("GUI", NULL, ImGuiWindowFlags_AlwaysAutoResize);
 	scene.inputs.mouse.on_gui = ImGui::GetIO().WantCaptureMouse;
 	scene.inputs.time_interval = time_interval;
 
 
 	// Display the ImGUI interface (button, sliders, etc)
+	display_gui_default(scene);
 	scene.display_gui();
 
 	// Handle camera behavior in standard frame
@@ -138,8 +141,8 @@ void initialize_default_shaders()
 	std::string default_path_shaders = project::path +"shaders/";
 
 	// Set standard mesh shader for mesh_drawable
-	mesh_drawable::default_shader.load(default_path_shaders +"mesh/vert.glsl", default_path_shaders +"mesh/frag.glsl");
-	triangles_drawable::default_shader.load(default_path_shaders +"mesh/vert.glsl", default_path_shaders +"mesh/frag.glsl");
+	mesh_drawable::default_shader.load(default_path_shaders +"mesh/mesh.vert.glsl", default_path_shaders +"mesh/mesh.frag.glsl");
+	triangles_drawable::default_shader.load(default_path_shaders +"mesh/mesh.vert.glsl", default_path_shaders +"mesh/mesh.frag.glsl");
 
 	// Set default white texture
 	image_structure const white_image = image_structure{ 1,1,image_color_type::rgba,{255,255,255,255} };
@@ -147,7 +150,7 @@ void initialize_default_shaders()
 	triangles_drawable::default_texture.initialize_texture_2d_on_gpu(white_image);
 
 	// Set standard uniform color for curve/segment_drawable
-	curve_drawable::default_shader.load(default_path_shaders +"single_color/vert.glsl", default_path_shaders+"single_color/frag.glsl");
+	curve_drawable::default_shader.load(default_path_shaders +"single_color/single_color.vert.glsl", default_path_shaders+"single_color/single_color.frag.glsl");
 }
 
 
@@ -262,5 +265,22 @@ void keyboard_callback(GLFWwindow* window, int key, int scancode, int action, in
 
 }
 
+void display_gui_default(scene_structure &scene)
+{
+	if(ImGui::CollapsingHeader("Window")) {
+#ifndef __EMSCRIPTEN__
+		bool changed_screen_mode = ImGui::Checkbox("Full Screen", &scene.window.is_full_screen);
+		if(changed_screen_mode){	
+			if (scene.window.is_full_screen)
+				scene.window.set_full_screen();
+			else
+				scene.window.set_windowed_screen();
+		}
+#endif
+		ImGui::SliderFloat("Gui Scale", &project::gui_scale, 0.5f, 2.5f);
+		
+		ImGui::Spacing();ImGui::Separator();ImGui::Spacing();
+	}
+}
 
 

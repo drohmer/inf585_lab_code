@@ -44,6 +44,7 @@ void scene_structure::initialize()
 
 		// curve oscillating as a cosine
 		const float x = 0;
+		
 		const float y = 4.0f * (u - 0.5f);
 		const float z = 0.1f * std::cos(u * 16 * 3.14f);
 
@@ -52,6 +53,8 @@ void scene_structure::initialize()
 	// send data to GPU and store it into a curve_drawable structure
 	curve.initialize_data_on_gpu(curve_positions);
 	curve.color = { 0,1,0 };
+
+
 
 
 

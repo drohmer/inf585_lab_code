@@ -76,13 +76,13 @@ void scene_structure::emit_particle()
 	//  Assume first that all particles have the same radius and mass
 	static numarray<vec3> const color_lut = { {1,0,0},{0,1,0},{0,0,1},{1,1,0},{1,0,1},{0,1,1} };
 	if (timer.event && gui.add_sphere) {
-		float const theta = rand_interval(0, 2 * Pi);
+		float const theta = rand_uniform(0, 2 * Pi);
 		vec3 const v = vec3(1.0f * std::cos(theta), 1.0f * std::sin(theta), 4.0f);
 
 		particle_structure particle;
 		particle.p = { 0,0,0 };
 		particle.r = 0.08f;
-		particle.c = color_lut[int(rand_interval() * color_lut.size())];
+		particle.c = color_lut[int(rand_uniform() * color_lut.size())];
 		particle.v = v;
 		particle.m = 1.0f; //
 

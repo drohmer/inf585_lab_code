@@ -7,11 +7,11 @@ using namespace cgp;
 particle_bubble::particle_bubble(float creation_time)
 {
 	t0 = creation_time;
-	float const theta = rand_interval(0.0f, 2 * Pi);
-	float const radius_position = rand_interval(0.0f, 0.7f);
+	float const theta = rand_uniform(0.0f, 2 * Pi);
+	float const radius_position = rand_uniform(0.0f, 0.7f);
 	p0 = radius_position * vec3(std::cos(theta), 0.25f, std::sin(theta));
-	radius = rand_interval(0.03f, 0.08f);
-	color = { 0.5f + rand_interval(0,0.2f),0.6f + rand_interval(0,0.2f),1.0f - rand_interval(0,0.2f) };
+	radius = rand_uniform(0.03f, 0.08f);
+	color = { 0.5f + rand_uniform(0,0.2f),0.6f + rand_uniform(0,0.2f),1.0f - rand_uniform(0,0.2f) };
 }
 
 vec3 particle_bubble::evaluate_position(float absolute_time) const

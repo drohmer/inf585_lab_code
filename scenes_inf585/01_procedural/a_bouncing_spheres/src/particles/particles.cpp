@@ -4,7 +4,7 @@ using namespace cgp;
 
 particle_structure::particle_structure(float creation_time)
 {
-	float const theta = rand_interval(0, 2 * Pi);
+	float const theta = rand_uniform(0, 2 * Pi);
 	p0 = { 0,0,0 };
 	v0 = { 0.8f * std::sin(theta),0.8f * std::cos(theta),5 };
 	t0 = creation_time;
