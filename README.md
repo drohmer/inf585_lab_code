@@ -14,7 +14,7 @@ or
 
 ```
 git clone https://github.com/drohmer/inf585_lab_code.git
-cd inf585_code/
+cd inf585_lab_code/
 git submodule init
 git submodule update
 ```
@@ -36,7 +36,7 @@ Each scene is provided with its own CMakeLists.txt and Makefile
 
 Compilation via CMake
 ```
-cd scenes_inf585/00_introduction/
+cd inf585_lab_code/scenes_inf585/00_introduction/
 cmake -B build/
 cd build/
 make -j8 # or any -jN, with N=$(nproc)
@@ -64,7 +64,7 @@ sudo apt-get install libglfw3-dev
 
 ### On MacOS:
 
-* You may use link::https://brew.sh/[brew] to install link::https://formulae.brew.sh/formula/glfw[glfw]. And then add the following two lines on your .zshrc to add glfw library to the path
+* You may use [brew](https://brew.sh/) to install [glfw](https://formulae.brew.sh/formula/glfw). And then add the following two lines on your .zshrc to add glfw library to the path
 ```
 export CPATH=/opt/homebrew/include
 export LIBRARY_PATH=/opt/homebrew/lib
