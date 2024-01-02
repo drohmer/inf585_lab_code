@@ -56,13 +56,13 @@ More details are provided in the dedicated [Installation setup and Compilation p
 
 The code requires the GLFW library in Linux and Mac.
 
-### With Linux:Ubuntu
+#### Linux (/Ubuntu)
 
 ```
 sudo apt-get install libglfw3-dev
 ```
 
-### On MacOS:
+#### MacOS:
 
 * You may use [brew](https://brew.sh/) to install [glfw](https://formulae.brew.sh/formula/glfw). And then add the following two lines on your .zshrc to add glfw library to the path
 ```
@@ -72,7 +72,7 @@ export LIBRARY_PATH=/opt/homebrew/lib
 
 * Alternatively, a pre-compiled glfw can be used without installation. To activate it, open the CMakeLists.txt file and set the option MACOS_GLFW_PRECOMPILED to ON. You may need to explicitely allow the mac to use the library if security triggers an alert.
 
-### On Windows:
+#### Windows:
 
 The simplest way is the use of [Visual Studio](https://visualstudio.microsoft.com/downloads/) with the __scripts/windows_cmake_visual.bat__ generating a visual studio project.
 
@@ -83,7 +83,7 @@ The full edition/compilation/debug toolchain should work with the following IDE:
 
 * [Visual Studio Code/vscode](https://code.visualstudio.com/) on Linux and MacOS: You may open a project with the dedicated configuration file `vscode.code-workspace`.
 * [CLion](https://www.jetbrains.com/clion) on any plateform. Note that as student you are elligible for a free licence to this IDE. A project can be loaded directly from the CMakeLists.txt.
-* QtCreator on Linux and MacOS. Install it via your package manager (apt/brew). A project can be loaded directly from the CMakeLists.txt (you may have to indicate to build in RelWithDebInfo instead of the default Debug).
+* [QtCreator](https://www.qt.io/product/development-tools) on Linux and MacOS. Install it via your package manager (apt/brew). A project can be loaded directly from the CMakeLists.txt (you may have to indicate to build in RelWithDebInfo instead of the default Debug).
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/) on Windows only. Free for individuals.
 
 
