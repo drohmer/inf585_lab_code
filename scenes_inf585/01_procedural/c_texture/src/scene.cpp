@@ -5,7 +5,6 @@ using namespace cgp;
 
 
 
-
 void scene_structure::initialize()
 {
 	camera_control.initialize(inputs, window); // Give access to the inputs and window global state to the camera controler

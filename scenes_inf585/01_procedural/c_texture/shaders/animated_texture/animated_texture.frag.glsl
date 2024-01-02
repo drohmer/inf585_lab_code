@@ -76,22 +76,6 @@ vec3 colormap(float a);
 
 
 
-// vec3 procedural_texture(float u, float v, float t)
-// {
-// 	float x = 2.0*(u-0.5);
-// 	float y = 2.0*(v-0.5);
-
-// 	float r = length(vec2(x,y));
-// 	float theta = atan(x,y);
-	
-// 	float alpha_theta = abs(theta/3.14);
-
-// 	float circle = 1.0-2.5*r*r;
-// 	float noise = snoise_abs(vec2( 15*alpha_theta, r-0.2*t),5);
-
-// 	return colormap( circle+0.6*(0.5+pow(noise,0.4) ) );
-// }
-
 vec3 procedural_texture(float u, float v, float t)
 {
 	// Set (x,y) to vary in [0,1]
@@ -105,9 +89,11 @@ vec3 procedural_texture(float u, float v, float t)
 	// q is the angle variation normalized in [0,1] and symetrized
 	float q = abs(theta/3.14);
 
-	
+	// ************************************************************* //
 	// TO DO: Adapt and change the code to get the expected behavior
-	// The following is an example of noise
+	// The following line is an example of noise
+	//   snoise_abs = \sum_octaves abs(perlin_noise)
+	// ************************************************************* //
 	float n = 0.8*snoise_abs(vec2(5.0*q,r-0.1*t),5);
 
 	return colormap(n);
