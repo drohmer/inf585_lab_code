@@ -52,7 +52,7 @@ make -j8 # or any -jN, with N=$(nproc)
 
 More details are provided in the dedicated [Installation setup and Compilation page](https://imagecomputing.net/cgp/compilation) if needed (Windows, Linux, Mac).
 
-## Requirement
+### Requirement
 
 The code requires the GLFW library in Linux and Mac.
 
@@ -71,6 +71,22 @@ export LIBRARY_PATH=/opt/homebrew/lib
 ```
 
 * Alternatively, a pre-compiled glfw can be used without installation. To activate it, open the CMakeLists.txt file and set the option MACOS_GLFW_PRECOMPILED to ON. You may need to explicitely allow the mac to use the library if security triggers an alert.
+
+### On Windows:
+
+The simplest way is the use of [Visual Studio](https://visualstudio.microsoft.com/downloads/) with the __scripts/windows_cmake_visual.bat__ generating a visual studio project.
+
+
+## IDE
+
+The full edition/compilation/debug toolchain should work with the following IDE:
+
+* [Visual Studio Code/vscode](https://code.visualstudio.com/) on Linux and MacOS: You may open a project with the dedicated configuration file `vscode.code-workspace`.
+* [CLion](https://www.jetbrains.com/clion) on any plateform. Note that as student you are elligible for a free licence to this IDE. A project can be loaded directly from the CMakeLists.txt.
+* QtCreator on Linux and MacOS. Install it via your package manager (apt/brew). A project can be loaded directly from the CMakeLists.txt (you may have to indicate to build in RelWithDebInfo instead of the default Debug).
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/) on Windows only. Free for individuals.
+
+
 
 ## Scripts
 
