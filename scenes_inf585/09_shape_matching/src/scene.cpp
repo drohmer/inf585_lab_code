@@ -23,7 +23,6 @@ void scene_structure::initialize()
 	mesh_wall.push_back(mesh_primitive_quadrangle({-1,-1,e},{-1,-1,3},{3,-1,3},{3,-1,e}));
 	mesh_wall.push_back(mesh_primitive_quadrangle({-1,-1,e},{-1,-1,3},{-1,3,3},{-1,3,e}));
 	wall.initialize_data_on_gpu(mesh_wall);
-	
 
 	// Add a default deformable model
 	add_new_deformable_shape(

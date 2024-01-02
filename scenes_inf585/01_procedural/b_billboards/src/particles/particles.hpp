@@ -12,6 +12,7 @@ struct particle_bubble
 
 	particle_bubble(float creation_time = 0);               // Create a bubble at its initial position
 	cgp::vec3 evaluate_position(float absolute_time) const; // Evaluate its position at a given time
+
 };
 
 struct particle_billboard

@@ -67,7 +67,7 @@ void scene_structure::initialize()
 	//  The max number of water drop is fixed
 	droplet_param.resize(DROPLET_NUMBER);
 	droplet_index = 0;
-	
+
 	// Preparation of the falling sphere
 	falling_sphere.initialize_data_on_gpu(mesh_primitive_sphere(0.05f));
 	falling_sphere.material.color = water.material.color;

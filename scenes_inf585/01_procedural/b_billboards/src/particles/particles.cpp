@@ -3,22 +3,21 @@
 using namespace cgp;
 
 
-
 particle_bubble::particle_bubble(float creation_time)
 {
 	t0 = creation_time;
 	float const theta = rand_uniform(0.0f, 2 * Pi);
 	float const radius_position = rand_uniform(0.0f, 0.7f);
 	p0 = radius_position * vec3(std::cos(theta), 0.25f, std::sin(theta));
-	radius = rand_uniform(0.03f, 0.08f);
+	radius = std::sqrt(rand_uniform(0, 0.08f*0.08f));
 	color = { 0.5f + rand_uniform(0,0.2f),0.6f + rand_uniform(0,0.2f),1.0f - rand_uniform(0,0.2f) };
 }
 
 vec3 particle_bubble::evaluate_position(float absolute_time) const
 {
-	float const t = absolute_time - t0;
+	float t = absolute_time - t0;
 
-	// To be modified ...
+	// TO DO: Modify the following line ...
 	return { std::sin(3 * t), t, 0.0f };
 
 }

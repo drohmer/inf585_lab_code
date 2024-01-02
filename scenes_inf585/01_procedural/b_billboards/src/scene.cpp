@@ -7,6 +7,7 @@ void scene_structure::initialize()
 {
 	camera_control.initialize(inputs, window); // Give access to the inputs and window global state to the camera controler
 	camera_control.set_rotation_axis_y();
+	camera_control.look_at({6,3,1},{0,0,0});
 	global_frame.initialize_data_on_gpu(mesh_primitive_frame());
 
 	// Initialize the shapes of the scene
@@ -39,6 +40,7 @@ void scene_structure::initialize()
 
 	timer_bubble.event_period = 0.2f;
 	timer_billboard.event_period = 0.05f;
+
 
 }
 
@@ -126,6 +128,7 @@ void scene_structure::display_gui()
 	ImGui::Checkbox("Transparent billboard", &gui.display_transparent_billboard);
 	ImGui::SliderFloat("Bubble creation", &timer_bubble.event_period, 0.05f, 2.0f);
 	ImGui::SliderFloat("Smoke creation", &timer_billboard.event_period, 0.01f, 0.5f);
+
 
 }
 
