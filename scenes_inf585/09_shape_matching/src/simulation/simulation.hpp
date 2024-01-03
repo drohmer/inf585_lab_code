@@ -16,7 +16,7 @@ struct simulation_parameter
 
 
     // Time step of the numerical time integration
-	float time_step = 0.002f;
+	float time_step = 0.0035f;
 };
 
 void simulation_step(std::vector<shape_deformable_structure>& deformables, simulation_parameter const& param);
