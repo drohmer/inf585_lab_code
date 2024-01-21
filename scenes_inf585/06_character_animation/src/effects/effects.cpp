@@ -2,7 +2,7 @@
 
 using namespace cgp;
 
-//#undef SOLUTION
+
 
 // Update a transition_structure before starting a new transition
 void effect_transition_start(effect_transition_structure& effect_transition, character_structure& character, std::string const& destination_anim)
