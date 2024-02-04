@@ -13,5 +13,6 @@ struct particle_structure
     float m;     // mass
 };
 
+
 void simulate(std::vector<particle_structure>& particles, float dt);
 

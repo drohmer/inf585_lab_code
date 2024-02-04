@@ -48,8 +48,9 @@ void scene_structure::display_frame()
 	// Display the result
 	sphere_display();
 
-	if (gui.display_frame)
-		draw(global_frame, environment);
+	// Display the box in which the particles should stay
+	draw(cube_wireframe, environment);
+
 }
 
 void scene_structure::sphere_display()
@@ -66,8 +67,7 @@ void scene_structure::sphere_display()
 		draw(sphere, environment);
 	}
 
-	// Display the box in which the particles should stay
-	draw(cube_wireframe, environment);
+
 }
 
 void scene_structure::emit_particle()
@@ -107,6 +107,7 @@ void scene_structure::mouse_move_event()
 void scene_structure::mouse_click_event()
 {
 	camera_control.action_mouse_click(environment.camera_view);
+
 }
 void scene_structure::keyboard_event()
 {
