@@ -105,7 +105,7 @@ void scene_structure::display_gui()
 
 	ImGui::Spacing();
 	ImGui::SliderFloat("Time step", &param.time_step, 0,0.01f,"%.5f",2.0f);
-	ImGui::SliderInt("Collision steps", &param.collision_steps, 1,5);	
+	ImGui::SliderInt("Collision steps", &param.collision_steps, 1,10);	
 	ImGui::SliderFloat("Friction with air", &param.friction, 0.001f, 0.1f, "%.4f", 2);
 	ImGui::SliderFloat("Elasticity", &param.elasticity, 0,1);	
 	ImGui::SliderFloat("Plasticity", &param.plasticity, 0,1);	

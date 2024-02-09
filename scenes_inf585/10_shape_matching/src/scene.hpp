@@ -10,36 +10,6 @@ using cgp::mesh_drawable;
 
 
 
-// struct shape_deformable_structure {
-// 	//cgp::mesh shape_mesh_reference;
-	
-
-// 	vec3 com;
-// 	vec3 com_reference;
-
-
-// 	numarray<vec3> position;
-// 	numarray<vec3> position_predict;
-// 	numarray<vec3> position_reference;
-// 	numarray<vec3> velocity;
-
-// 	numarray<uint3> connectivity;
-// 	numarray<vec3> normal;
-// 	cgp::mesh_drawable drawable;
-
-// 	void initialize(cgp::mesh const& shape);
-
-	
-
-// 	int size() const{return position.size();}
-
-// 	void update_drawable() {
-// 		drawable.vbo_position.update(position);
-// 		normal_per_vertex(position, connectivity, normal);
-// 		drawable.vbo_normal.update(normal);
-// 	}
-// };
-
 enum primitive_type_enum {primitive_cube, primitive_cylinder, primitive_cone, primitive_bunny, primitive_spot};
 
 struct gui_parameters {

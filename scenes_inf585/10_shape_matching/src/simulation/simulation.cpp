@@ -96,11 +96,11 @@ void shape_matching(std::vector<shape_deformable_structure>& deformables, simula
     //   - For all deformable shapes
     //     - Update the com (center of mass) from the predicted position
     //     - Compute the best rotation R such that p_predicter - com = R (p_reference-com_reference)
-    //        - Compute the matrix M = \sum r r0^ref
+    //        - Compute the matrix M = \sum r r_ref^T
     //            with r  = p_predicted - com
-    //                 r0 = p_reference - com_reference
+    //                 r_ref = p_reference - com_reference
     //        - Compute R as the polar decomposition of M
-    //     - Set the new predicted position as p_predicted = R (p_referece-com_reference) + com
+    //     - Set the new predicted position as p_predicted = R (p_reference-com_reference) + com
     // 
     //
     // Help:

@@ -15,7 +15,7 @@ template <typename T> void advect(cgp::grid_2D<T>& new_value, cgp::grid_2D<T> co
 
 
 template <typename T>
-void diffuse(cgp::grid_2D<T>& new_field, cgp::grid_2D<T> const& field_reference, float mu, float dt, boundary_condition boundary)
+void diffuse(cgp::grid_2D<T>& f, cgp::grid_2D<T> const& f_prev, float mu, float dt, boundary_condition boundary)
 {
     using namespace cgp;
     // Compute diffusion on f
@@ -23,14 +23,17 @@ void diffuse(cgp::grid_2D<T>& new_field, cgp::grid_2D<T> const& field_reference,
     //  The function is generic in order to handle f as being either a velocity (T=vec2), or a color density (T=vec3)
 
     // TO do:
-    //  Update new_field in solving the diffusion equation for the time step dt
+    //  Update the field f in solving the diffusion equation for the time step dt
     //  Use Gauss-Seidel iterations over 10 to 15 times
     //   For each iteration, you may reset the boundary conditions with the following code:
     //   		if(boundary==copy)
-	//		set_boundary(new_field);
+	//		set_boundary(f);
 	//       	else
-	//		set_boundary_reflective(new_field);
-
+	//		set_boundary_reflective(f);
+    // 
+    //  Note: 
+    //     - The value of f at coordinates x,y is f(x,y)
+    //     - The field are stored as a grid: f.dimension[0], and f.dimension[1] gives the respective size of the grid in x and y coordinates.
 
 
 }

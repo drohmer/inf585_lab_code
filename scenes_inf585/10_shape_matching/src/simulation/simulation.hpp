@@ -12,11 +12,11 @@ struct simulation_parameter
     // Velocity reduction at each time step (* dt);
     float friction = 1.0f;
     // Numer of collision handling step for each numerical integration
-    int collision_steps = 1;
+    int collision_steps = 5;
 
 
     // Time step of the numerical time integration
-	float time_step = 0.0035f;
+	float time_step = 0.005f;
 };
 
 void simulation_step(std::vector<shape_deformable_structure>& deformables, simulation_parameter const& param);
